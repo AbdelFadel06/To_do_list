@@ -10,11 +10,19 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::latest()->get();
+        $tasks = collect();
+        $completed = $request->completed ?? null;
+        if (! is_null($completed)) {
+            $completed = (bool) $completed;
+            $tasks = Task::where('isDone', $completed)->get();
+            return view('Tasks.index', compact('tasks', 'completed'));
 
-        return view('Tasks.index', compact('tasks'));
+        }
+
+        $tasks = Task::latest()->get();
+        return view('Tasks.index', compact('tasks', 'completed'));
     }
 
     /**
@@ -93,15 +101,21 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 
-    public function completed()
-    {
-        $tasks = Task::where('isDone', true)->get();
-        return view('Tasks.index', compact('tasks'));
-    }
+    // public function completed()
+    // {
+    //     $tasks = Task::where('isDone', true)->get();
+    //     return view('Tasks.index', [
+    //         'tasks' => $tasks,
+    //         'filter' => 'completed'
+    //     ]);
+    // }
 
-    public function pending()
-    {
-        $tasks = Task::where('isDone', false)->get();
-        return view('Tasks.index', compact('tasks'));
-    }
+    // public function pending()
+    // {
+    //     $tasks = Task::where('isDone', false)->get();
+    //     return view('Tasks.index', [
+    //         'tasks' => $tasks,
+    //         'filter' => 'pending'
+    //     ]);
+    // }
 }
