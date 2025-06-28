@@ -25,7 +25,7 @@
     </h2>
 
     @foreach ($tasks as $task)
-    <div class="my-4 max-w-2xl mx-auto rounded-xl border border-gray-200 bg-white p-4 sm:p-6 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+    <div class="my-4  mx-auto rounded-xl border border-gray-200 bg-white p-4 sm:p-6 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
         
         {{-- Partie gauche : titre et description --}}
         <div class="flex-1">

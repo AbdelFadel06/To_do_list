@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-xl mx-auto mt-8 bg-white p-6 rounded-lg shadow-md">
+<div class="max-w-2xl mx-auto mt-8 bg-white p-6 rounded-lg shadow-md">
     <h2 class="text-2xl font-semibold text-gray-800 mb-6">Modifier la tâche</h2>
 
     <form action="{{ route('tasks.update', $task) }}" method="POST" class="space-y-4">

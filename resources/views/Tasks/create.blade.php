@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-xl mx-auto mt-8 bg-white shadow-md rounded-2xl p-6">
+<div class="max-w-2xl mx-auto mt-8 bg-white shadow-md rounded-2xl p-6">
     <h2 class="text-2xl font-semibold text-gray-800 mb-6">Créer une nouvelle tâche</h2>
 
     <form action="{{ route('tasks.store') }}" method="POST" class="space-y-4">
@@ -21,10 +21,17 @@
 
         <input type="hidden" name="user_id" value="1">
 
-        <button type="submit"
-            class="w-full bg-fuchsia-600 text-white px-4 py-2 rounded-md hover:bg-fuchsia-700 transition-colors">
-            Créer une nouvelle tâche
-        </button>
+        <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0">
+            <button type="submit"
+                class="w-full bg-fuchsia-600 text-white px-4 py-2 rounded-md hover:bg-fuchsia-700 transition-colors">
+                Créer une nouvelle tâche
+            </button>
+            <a href="{{ route('tasks.index') }}"
+                class="w-full text-center bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400 transition-colors">
+                Annuler
+            </a>
+        </div>
+
     </form>
 </div>
 @endsection
